@@ -1,5 +1,9 @@
 const Footer = () => {
-    return <div>푸터</div>;
+    return (
+        <footer id="footer">
+            <p className="copy">Copyright 2025. 이태경. all rights reserved.</p>
+        </footer>
+    );
 };
 
 export default Footer;

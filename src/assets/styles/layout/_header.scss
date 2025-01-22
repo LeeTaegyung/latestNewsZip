@@ -1,0 +1,45 @@
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+    border-bottom: 1px solid #dbdbdb;
+    flex: 0 0 auto;
+
+    .logo {
+        a {
+            display: block;
+            font-size: 20px;
+            font-weight: 700;
+            font-style: italic;
+            line-height: 1;
+        }
+    }
+
+    .gnb {
+        ul {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            li {
+                a {
+                    display: block;
+                    padding: 5px 10px;
+                    border: 1px solid #dbdbdb;
+                    font-size: 15px;
+                    font-weight: 700;
+                    border-radius: 5px;
+                }
+
+                .country_btn {
+                    display: block;
+                    width: 40px;
+                    height: 40px;
+                    border: 1px solid #dbdbdb;
+                    font-size: 10px;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}

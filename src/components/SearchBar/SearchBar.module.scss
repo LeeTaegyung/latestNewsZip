@@ -1,0 +1,28 @@
+.search {
+    &__bar {
+        display: flex;
+        max-width: 500px;
+        margin: 0 auto 40px;
+        border: 1px solid #999;
+        border-radius: 2px;
+
+        &:focus-within {
+            border-color: #252525;
+        }
+    }
+
+    &__input {
+        flex: 1;
+        height: 40px;
+        border: 0;
+        padding: 0 10px;
+    }
+
+    &__btn {
+        flex: 0 0 auto;
+        margin: 8px 0;
+        padding: 0 10px;
+        border-left: 1px solid #dbdbdb;
+        font-size: 14px;
+    }
+}
