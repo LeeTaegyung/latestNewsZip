@@ -1,6 +1,6 @@
 import Layout from "./components/Layout/Layout";
-import NewsList from "./pages/NewsList/NewsList";
-import ScrapList from "./pages/ScrapList/ScrapList";
+import NewsList from "./pages/NewsListPage/NewsListPage";
+import ScrapList from "./pages/ScrapListPage/ScrapListPage";
 
 const routes = [
     {
