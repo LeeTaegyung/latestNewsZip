@@ -1,11 +1,10 @@
-import { useRecoilState } from "recoil";
 import style from "./SearchBar.module.scss";
-import { searchState } from "../../recoil/atoms/searchState";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
-    const [searchText, setSearchText] = useState("");
-    const [search, setSearch] = useRecoilState(searchState);
+    const navigate = useNavigate();
+    const [searchText, setSearchText] = useState<string>("");
 
     const onChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchText(e.target.value);
@@ -13,8 +12,8 @@ const SearchBar = () => {
 
     const onKeyDownHandle = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
-            setSearch(searchText);
             setSearchText("");
+            navigate(`/?q=${searchText}`);
         }
     };
 
