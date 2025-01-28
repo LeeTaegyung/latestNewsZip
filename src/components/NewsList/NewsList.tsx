@@ -25,7 +25,18 @@ const NewsList = ({ data }: { data: NewsItemType[] }) => {
                         />
                     ))
                 ) : (
-                    <li>검색 결과가 없습니다.</li>
+                    <li
+                        style={{
+                            textAlign: "center",
+                            paddingTop: "100px",
+                            paddingBottom: "100px",
+                            gridColumn: "1/4",
+                            fontSize: "20px",
+                            fontWeight: 700,
+                        }}
+                    >
+                        데이터가 없습니다.
+                    </li>
                 )}
             </ul>
             {isModalOpen && (

@@ -71,9 +71,11 @@
         display: flex;
         gap: 15px;
         font-size: 14px;
+        overflow: hidden;
 
         dt {
             font-weight: 700;
+            flex: 0 0 auto;
         }
     }
 

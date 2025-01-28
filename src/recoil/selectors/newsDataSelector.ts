@@ -12,8 +12,6 @@ export const newsDataSelector = selector({
         const country = get(countryState);
         const search = get(searchState);
 
-        console.log("newsDataSelector");
-
         try {
             const res = await axios.get(
                 `${API_URL}/api/1/latest?apikey=${API_KEY}&image=1&country=${country}${

@@ -49,26 +49,36 @@ const NewsDetailModal = ({ currentNewsData, setIsModalOpen }: Props) => {
                         <h3 className={style.NewsDetailModal__title}>
                             {cleanText(title)}
                         </h3>
-                        <p className={style.NewsDetailModal__desc}>
-                            {cleanText(description)}
-                        </p>
+                        {description && (
+                            <p className={style.NewsDetailModal__desc}>
+                                {cleanText(description)}
+                            </p>
+                        )}
                         <div className={style.NewsDetailModal__info}>
-                            <dl className={style.NewsDetailModal__infoData}>
-                                <dt>국가</dt>
-                                <dd>{country}</dd>
-                            </dl>
-                            <dl className={style.NewsDetailModal__infoData}>
-                                <dt>언론사명</dt>
-                                <dd>{source_name}</dd>
-                            </dl>
-                            <dl className={style.NewsDetailModal__infoData}>
-                                <dt>기자</dt>
-                                <dd>{creator}</dd>
-                            </dl>
-                            <dl className={style.NewsDetailModal__infoData}>
-                                <dt>날짜</dt>
-                                <dd>{pubDate}</dd>
-                            </dl>
+                            {country && (
+                                <dl className={style.NewsDetailModal__infoData}>
+                                    <dt>국가</dt>
+                                    <dd>{country.join(", ")}</dd>
+                                </dl>
+                            )}
+                            {source_name && (
+                                <dl className={style.NewsDetailModal__infoData}>
+                                    <dt>언론사명</dt>
+                                    <dd>{source_name}</dd>
+                                </dl>
+                            )}
+                            {creator && (
+                                <dl className={style.NewsDetailModal__infoData}>
+                                    <dt>기자</dt>
+                                    <dd>{creator.join(", ")}</dd>
+                                </dl>
+                            )}
+                            {pubDate && (
+                                <dl className={style.NewsDetailModal__infoData}>
+                                    <dt>날짜</dt>
+                                    <dd>{pubDate}</dd>
+                                </dl>
+                            )}
                         </div>
                         <Link
                             to={link}
