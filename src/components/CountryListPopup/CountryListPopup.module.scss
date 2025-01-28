@@ -1,0 +1,78 @@
+.countryListPopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: top;
+    justify-content: end;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1111;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - 30px);
+        max-width: 300px;
+        height: 100%;
+        background: #fff;
+        overflow: hidden;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #dbdbdb;
+        flex: 0 0 auto;
+
+        &__title {
+            padding-left: 10px;
+            font-size: 17px;
+            font-weight: 700;
+        }
+        &__closeBtn {
+            width: 40px;
+            height: 40px;
+            color: #fff;
+            background: #888;
+        }
+    }
+
+    &__body {
+        flex: 1;
+        overflow: auto;
+
+        .countryList {
+            &__item {
+                border-bottom: 1px solid #dbdbdb;
+
+                &__btn {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    padding: 10px;
+                    font-size: 14px;
+
+                    &:hover {
+                        background: #eee;
+                    }
+                    // 선택된 국가의 경우
+                    &.selected {
+                        background-color: greenyellow;
+                    }
+                }
+
+                &__text {
+                    font-weight: 700;
+                    text-transform: capitalize;
+                }
+
+                &__code {
+                    color: #999;
+                }
+            }
+        }
+    }
+}

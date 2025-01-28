@@ -18,7 +18,7 @@ const NewsListPage = () => {
         } else {
             setSearch("");
         }
-    }, [searchParams]);
+    }, [searchParams, setSearch]);
 
     return (
         <>
