@@ -15,14 +15,13 @@ const NewsDetailModal = ({ currentNewsData, setIsModalOpen }: Props) => {
     useEffect(() => {
         if (!currentNewsData) return;
         const getNewsScrap = localStorage.getItem("newsScrap");
-        if (
-            getNewsScrap &&
-            JSON.parse(getNewsScrap).findIndex(
-                (item: NewsItemType) =>
-                    item.article_id === currentNewsData.article_id
-            ) > -1
-        ) {
-            setIsScrap(true);
+        if (getNewsScrap) {
+            setIsScrap(
+                JSON.parse(getNewsScrap).some(
+                    (item: NewsItemType) =>
+                        item.article_id === currentNewsData.article_id
+                )
+            );
         }
     }, [currentNewsData]);
 
@@ -57,13 +56,14 @@ const NewsDetailModal = ({ currentNewsData, setIsModalOpen }: Props) => {
         } else {
             // 있으면
             const convertNewsScrap = JSON.parse(getNewsScrap);
-            const checkSameId = convertNewsScrap.findIndex(
-                (item: NewsItemType) =>
-                    item.article_id === currentNewsData.article_id
-            );
 
             // 동일한 기사 스크랩되지 않게 처리
-            if (checkSameId > -1) {
+            if (
+                convertNewsScrap.some(
+                    (item: NewsItemType) =>
+                        item.article_id === currentNewsData.article_id
+                )
+            ) {
                 alert("이미 스크랩되었습니다.");
                 return;
             }
