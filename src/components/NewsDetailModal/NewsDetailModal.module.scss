@@ -24,7 +24,19 @@
     }
 
     &__header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
         flex: 0 0 auto;
+        gap: 5px;
+
+        button {
+            display: block;
+            min-width: 40px;
+            padding: 5px 10px;
+            height: 40px;
+            font-size: 12px;
+        }
     }
 
     &__body {
@@ -33,12 +45,16 @@
     }
 
     &__closeBtn {
-        display: block;
-        width: 40px;
-        height: 40px;
-        margin-left: auto;
-        font-size: 12px;
         background: #ddd;
+    }
+    &__scrapBtn {
+        border: 1px solid #ddd;
+
+        &.scrapOn {
+            border-color: #252525;
+            background: #252525;
+            color: #fff;
+        }
     }
 
     &__image {

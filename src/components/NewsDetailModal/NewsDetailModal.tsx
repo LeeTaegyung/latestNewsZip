@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import style from "./NewsDetailModal.module.scss";
 import { NewsItemType } from "../../types/newsItem";
 import { cleanText } from "../../utils/cleanText";
+import { useEffect, useState } from "react";
 
 interface Props {
     currentNewsData: NewsItemType | undefined;
@@ -9,7 +10,23 @@ interface Props {
 }
 
 const NewsDetailModal = ({ currentNewsData, setIsModalOpen }: Props) => {
-    if (currentNewsData === undefined) return;
+    const [isScrap, setIsScrap] = useState(false);
+
+    useEffect(() => {
+        if (!currentNewsData) return;
+        const getNewsScrap = localStorage.getItem("newsScrap");
+        if (
+            getNewsScrap &&
+            JSON.parse(getNewsScrap).findIndex(
+                (item: NewsItemType) =>
+                    item.article_id === currentNewsData.article_id
+            ) > -1
+        ) {
+            setIsScrap(true);
+        }
+    }, [currentNewsData]);
+
+    if (!currentNewsData) return;
 
     const {
         creator,
@@ -26,10 +43,48 @@ const NewsDetailModal = ({ currentNewsData, setIsModalOpen }: Props) => {
         setIsModalOpen(false);
     };
 
+    const addScrap = () => {
+        const getNewsScrap = localStorage.getItem("newsScrap");
+        setIsScrap(true);
+
+        // 로컬스토리지의 newsScrap 키 여부 확인
+        if (!getNewsScrap || getNewsScrap === null) {
+            // 없으면
+            localStorage.setItem(
+                "newsScrap",
+                JSON.stringify([currentNewsData])
+            );
+        } else {
+            // 있으면
+            const convertNewsScrap = JSON.parse(getNewsScrap);
+            const checkSameId = convertNewsScrap.findIndex(
+                (item: NewsItemType) =>
+                    item.article_id === currentNewsData.article_id
+            );
+
+            // 동일한 기사 스크랩되지 않게 처리
+            if (checkSameId > -1) {
+                alert("이미 스크랩되었습니다.");
+                return;
+            }
+
+            const setNewsScrap = [...JSON.parse(getNewsScrap), currentNewsData];
+            localStorage.setItem("newsScrap", JSON.stringify(setNewsScrap));
+        }
+    };
+
     return (
         <div className={style.NewsDetailModal}>
             <div className={style.NewsDetailModal__container}>
                 <div className={style.NewsDetailModal__header}>
+                    <button
+                        className={`${style.NewsDetailModal__scrapBtn} ${
+                            isScrap && style.scrapOn
+                        }`}
+                        onClick={addScrap}
+                    >
+                        스크랩하기
+                    </button>
                     <button
                         className={style.NewsDetailModal__closeBtn}
                         onClick={closeModal}
